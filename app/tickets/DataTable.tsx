@@ -4,12 +4,15 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@
 import { Ticket } from '@prisma/client'
 import Link from 'next/link';
 import React from 'react'
+import { ArrowDown } from 'lucide-react';
+import { SearchParams } from './page';
 
 interface Props {
     tickets: Ticket[]
+    searchParams: SearchParams
 }
 
-const DataTable = ({tickets}: Props) => {
+const DataTable = ({tickets,searchParams}: Props) => {
     
   return (
     <div className="w-ful mt-5">
@@ -17,10 +20,10 @@ const DataTable = ({tickets}: Props) => {
       <Table>
         <TableHeader>
             <TableRow>
-                <TableHead>Title</TableHead>
-                <TableHead><div className="flex justify-center">Status</div></TableHead>
-                <TableHead><div className="flex justify-center">Priority</div></TableHead>
-                <TableHead>Create At</TableHead>
+                <TableHead><Link href={{query: {...searchParams, orderBy: "title"}}}>Title</Link>{"title" === searchParams.orderBy && (<ArrowDown className="inline p-1"/>)}</TableHead>
+                <TableHead><div className="flex justify-center"><Link href={{query: {...searchParams, orderBy: "status"}}}>Status</Link>{"status" === searchParams.orderBy && (<ArrowDown className="inline p-1"/>)}</div></TableHead>
+                <TableHead><div className="flex justify-center"><Link href={{query: {...searchParams, orderBy: "priority"}}}>Priority</Link>{"priority" === searchParams.orderBy && (<ArrowDown className="inline p-1"/>)}</div></TableHead>
+                <TableHead><Link href={{query: {...searchParams, orderBy: "createdAt"}}}>Create At</Link>{"createdAt" === searchParams.orderBy && (<ArrowDown className="inline p-1"/>)}</TableHead>
             </TableRow>
         </TableHeader>
         <TableBody>
