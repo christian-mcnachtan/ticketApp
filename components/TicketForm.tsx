@@ -116,6 +116,7 @@ const TicketForm = ({ticket}: Props) => {
         <Button type="submit" disabled={isSubmitting}>{ticket ? "Update Ticket" : "Create Ticket"}</Button>
         </form>
       </Form>
+      <p className="text-destructive">{error}</p>
     </div>
   )
 }
