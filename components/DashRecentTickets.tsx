@@ -1,6 +1,6 @@
 import { Prisma } from '@prisma/client'
 import React from 'react'
-import {Card, CardTitle, CardHeader, CardDescription, CardContent} from "./ui/card"
+import {Card, CardTitle, CardHeader,  CardContent} from "./ui/card"
 import TicketStatusBadge from './TicketStatusBadge';
 import  Link  from 'next/link';
 import TicketPriority from './TicketPriority';
